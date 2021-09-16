@@ -20,8 +20,7 @@ public class ResturantdaoImplements implements ResturantDao {
 			connection = DB_Connect.getConnect();
 			Statement stmt = connection.createStatement();
 			System.out.println("Enter the choice : ");
-			System.out.println(
-					"1.Search by Name \t" + "2.Search by Location \t" + "3.Search by Opening and Closing time");
+			System.out.println("1.Search by Name \t" + "2.Search by Location \t" + "3.Search by Opening and Closing time");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -91,6 +90,12 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 
 			e.printStackTrace();
+		}finally {
+			try {
+				if (connection != null) {
+					connection.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();}
 		}
 		return null;
 	}
@@ -335,6 +340,13 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 		
 			e.printStackTrace();
+		}finally {
+			try {
+				if (connection != null) {
+					connection.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();}
+			
 		}
 
 	}
@@ -363,8 +375,13 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+		}finally {
+			try {
+				if (connection != null) {
+					connection.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();}
 		}
-
 	}
 
 	public void sort() {
@@ -432,6 +449,7 @@ public class ResturantdaoImplements implements ResturantDao {
 
 			e.printStackTrace();
 		}
+		
 
 	}
 
