@@ -90,12 +90,6 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 
 			e.printStackTrace();
-		}finally {
-			try {
-				if (connection != null) {
-					connection.close();}
-			} catch (SQLException e) {
-				e.printStackTrace();}
 		}
 		return null;
 	}
@@ -256,6 +250,18 @@ public class ResturantdaoImplements implements ResturantDao {
 				System.out.println("Enter the time to Update: ");
 				String optime = sc.next();
 				String cltime = sc.next();
+				String regex12 = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[:])[A-Za-z0-9:]+$";
+				Pattern p12 = Pattern.compile(regex12);
+				Pattern p13 = Pattern.compile(regex12);
+				if (cltime == null) {
+					System.out.println("Didn't Enter the Closing time ");
+				}
+				Matcher m13 = p13.matcher(optime);
+				Matcher m12 = p12.matcher(cltime);
+				if (m12.matches() == false || m13.matches()==false) {
+					System.out.println("Invalid closing time format...");
+					rds.run();
+				}
 				rd.setOptime(optime);
 				rd.setCltime(cltime);
 				ps.setString(1, optime);
@@ -294,19 +300,9 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} 
 
-		}
+		
 
 	}
 
@@ -340,14 +336,9 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 		
 			e.printStackTrace();
-		}finally {
-			try {
-				if (connection != null) {
-					connection.close();}
-			} catch (SQLException e) {
-				e.printStackTrace();}
-			
 		}
+			
+		
 
 	}
 
@@ -375,13 +366,8 @@ public class ResturantdaoImplements implements ResturantDao {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		}finally {
-			try {
-				if (connection != null) {
-					connection.close();}
-			} catch (SQLException e) {
-				e.printStackTrace();}
 		}
+		
 	}
 
 	public void sort() {
