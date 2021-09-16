@@ -164,7 +164,7 @@ public class ResturantdaoImplements implements ResturantDao {
 			System.out.println("Enter the Phone no to the Resturant: ");
 			int Phone_no = sc.nextInt();
 			String phoneno = String.valueOf(Phone_no);
-			String regex13 = "^([1-9]*)$";
+			String regex13 = "^([0-9]*)$";
 			Pattern p13 = Pattern.compile(regex13);
 			if (phoneno == null) {
 				System.out.println("Didn't Enter a proper time: ");
